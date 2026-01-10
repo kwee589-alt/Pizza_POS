@@ -1,0 +1,86 @@
+/*
+   custom.css - 2025 Modern Starter
+   Best practice: Define variables at the root for site-wide updates
+*/
+:root {
+    --primary-color: #0073aa;    /* Branding Color */
+    --text-dark: #333333;       /* Main text */
+    --bg-light: #f4f4f4;        /* Backgrounds */
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Custom Heading Style */
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* 2025 Modern Card Component */
+.custom-card {
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Call-to-Action Button */
+.btn-custom {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Mobile Responsiveness Example */
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+}
+
+/* custom.css or style.css file */
+
+/* Image container ကို ပြင်ဆင်ခြင်း */
+.fruite-item .fruite-img {
+    overflow: hidden; /* ပုံကို ဘောင်အပြင် မထွက်စေရန် ဖွက်ထားသည် */
+}
+
+/* Image အပေါ် Hover လုပ်ရင် Transition effect လေးနဲ့ ကြီးလာစေဖို့ */
+.fruite-item .fruite-img img {
+    transition: transform 0.5s ease; /* 0.5 စက္ကန့်အတွင်း ချောမွေ့စွာ ပြောင်းလဲစေသည် */
+    transform-origin: center center;
+}
+
+/* Mouse တင်လိုက်တဲ့အခါ ပုံရဲ့ အရွယ်အစားကို 1.1 ဆ (110%) ကြီးစေသည် */
+.fruite-item:hover .fruite-img img {
+    transform: scale(1.1);
+}
+
+/* Card တစ်ခုလုံးကိုပါ Hover လုပ်ရင် နည်းနည်းလေး ကြွတက်လာအောင် (Shadow Effect) */
+.fruite-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fruite-item:hover {
+    transform: translateY(-5px); /* Card ကို အပေါ် ၅ pixel ရွှေ့လိုက်သည် */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important; /* Shadow ကို ပိုထူပေးလိုက်သည် */
+}
+
+
+
+

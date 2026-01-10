@@ -1,0 +1,94 @@
+/* Section Title Style */
+.delivery-section {
+    background-color: #0c0c0c;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.section-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.section-title span {
+    color: #ff6600; /* လိမ္မော်ရောင် ကွင်းစကွင်းပိတ် */
+}
+
+/* Card Main Style */
+.delivery-card {
+    background: rgba(255, 255, 255, 0.03); /* မှန်ကြည်ပုံစံ ခပ်မှိန်မှိန် */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+
+    /* ထောင့်ဖြတ် အကွေးဒီဇိုင်း (အပေါ်ဘယ်နဲ့ အောက်ညာကို ပိုကွေးထားတာ) */
+    border-radius: 80px 20px 80px 20px;
+    transition: 0.3s ease;
+}
+
+.delivery-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Card Image */
+.card-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* အစားအသောက်ပုံကို အဝိုင်းလုပ်ထားတာ */
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+/* Content Area */
+.card-content {
+    text-align: left;
+    color: white;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Price and Buttons */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.order-btn {
+    background-color: #ff6600;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-btn {
+    background: transparent;
+    border: 1px solid #ff6600;
+    color: #ff6600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
