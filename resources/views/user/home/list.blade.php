@@ -130,22 +130,59 @@
                                 <div id="tab-1" class="tab-pane fade show p-0 active">
                                     <div class="row g-4">
                                         <!-- Sidebar (Search & Filter) -->
-                                        <div class="col-12 col-lg-3">
-                                            <!-- Sidebar Content... -->
-                                            <div class="bg-light p-3 rounded shadow-sm">
-                                                <h5 class="text-start mb-3">Filter & Sort</h5>
-                                                <form action="" method="get">
-                                                    <input type="text" name="searchKey" placeholder="Search..."
-                                                        class="form-control mb-2">
-                                                    <input type="number" name="minPrice" placeholder="Min Price"
-                                                        class="form-control mb-2">
-                                                    <input type="number" name="maxPrice" placeholder="Max Price"
-                                                        class="form-control mb-2">
-                                                    <select name="sortingType" class="form-select mb-3">
-                                                        <option value="">Default Sorting</option>
-                                                    </select>
-                                                    <button type="submit" class="btn btn-primary w-100">Apply</button>
+                                        <div class="col-3">
+                                            <div class="form">
+                                                <form action="{{ route('userHome') }}" method="get">
+                                                    @csrf
+                                                    <div class="input-group">
+                                                        <input type="text" name="searchKey"
+                                                            value="{{ request('searchKey') }}" class=" form-control"
+                                                            placeholder="Enter Search Key...">
+                                                        <button type="submit" class=" btn"> <i
+                                                                class="fa-solid fa-magnifying-glass"></i> </button>
+                                                    </div>
                                                 </form>
+                                            </div>
+
+
+
+
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <form action="{{ route('userHome') }}" method="get">
+                                                        @csrf
+                                                        <input type="text" name="minPrice"
+                                                            value="{{ request('minPrice') }}"
+                                                            placeholder="Minimum Price..." class=" form-control my-2">
+                                                        <input type="text" name="maxPrice"
+                                                            value="{{ request('maxPrice') }}"
+                                                            placeholder="Maximun Price..." class=" form-control my-2">
+                                                        <input type="submit" value="Search"
+                                                            class=" btn btn-success my-2 w-100">
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <form action="{{ route('userHome') }}" method="get">
+
+                                                        <select name="sortingType"
+                                                            class="form-control w-100 bg-white mt-3">
+                                                            <option value="name,asc">Alphabet A - Z</option>
+                                                            <option value="name,desc">Alphabet Z - A</option>
+                                                            <option value="price,asc">Price Lowest to Highest</option>
+                                                            <option value="price,desc">Price Hightest to Lowest</option>
+                                                            <option value="created_at,asc">Date Asc to Desc</option>
+                                                            <option value="created_at,desc">Date Desc to Asc</option>
+
+
+                                                        </select>
+
+                                                        <input type="submit" value="Sort"
+                                                            class=" btn btn-success my-3 w-100">
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
 
