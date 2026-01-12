@@ -1,0 +1,48 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches: [ main ]  # သင့် branch နဲ့ အစားထိုးပါ
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # နောက်ဆုံး version သုံးပါ
+
+      # လိုအပ်ရင် Composer install လုပ်ပါ (Laravel အတွက်)
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'  # သင့် Laravel version နဲ့ အစားထိုးပါ
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      # လိုအပ်ရင် .env ဖန်တီးပါ (secrets ကနေ)
+      - name: Create .env
+        run: |
+          echo "APP_ENV=production" >> .env
+          echo "DB_HOST=your-db-host" >> .env  # သင့် DB info ထည့်ပါ
+          # ... အခြား env vars တွေ ထည့်ပါ
+
+      - name: Generate app key
+        run: php artisan key:generate --force
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftpupload.net  # သင့် server (InfinityFree ဆို ftpupload.net)
+          username: ${{ secrets.FTP_USERNAME }}  # GitHub Secrets ကနေ
+          password: ${{ secrets.FTP_PASSWORD }}  # GitHub Secrets ကနေ
+          protocol: ftp  # သို့မဟုတ် ftps (server ပေါ်မူတည်ပြီး ရွေးပါ။ InfinityFree က ftp ကောင်း)
+          port: 21  # မှန်မှန် မလိုအပ်ရင် မထည့်ပါနဲ့
+          local-dir: ./  # သင့် project root (public folder ကို root လုပ်ချင်ရင် အောက်က .htaccess နဲ့ လုပ်ပါ)
+          server-dir: /htdocs/  # သင့် server dir (InfinityFree ဆို htdocs/)
+          dry-run: true  # ပထမ စမ်းရင် true လုပ်ပါ (တကယ် upload မလုပ်ဘူး၊ စမ်းပါတယ်)
+          log-level: verbose  # ပိုအသေးစိတ် log ကြည့်ချင်ရင် ထည့်ပါ
+          exclude: |
+            **/.git*
+            **/node_modules*
+            **/vendor*  # လိုအပ်ရင် ထပ်ထည့်ပါ (vendor ကို မတင်ချင်ရင်)
