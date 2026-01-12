@@ -96,6 +96,9 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'require',
+            'options' => [
+                '--endpoint=ep-bold-band-ahtttlrr'
+            ],
         ],
 
         'sqlsrv' => [
