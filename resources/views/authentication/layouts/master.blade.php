@@ -11,6 +11,18 @@
 
     <title>SB Admin 2 - Login</title>
 
+    <style>
+        body,
+        .min-h-screen {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url("{{ asset('user/img/pizza_login.jpg') }}") !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+        }
+    </style>
+
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -22,10 +34,7 @@
 
 </head>
 
-<body
-    style="background-image: url('{{ asset('user/img/pizza_login.jpg') }}');
-                   min-height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    >
+<body>
 
     @yield('content');
 
