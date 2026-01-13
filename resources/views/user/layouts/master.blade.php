@@ -297,7 +297,7 @@
     })
 </script>
 
-<script>
+{{-- <script>
     $(document).ready(function() {
 
         $('.btn-plus').click(function() {
@@ -317,7 +317,7 @@
             }
         });
     });
-</script>
+</script> --}}
 
 <script>
     $(document).ready(function() {

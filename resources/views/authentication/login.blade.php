@@ -8,7 +8,7 @@
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5"style="background: rgba(255, 255, 255, 0.15);
+                <div class="card o-hidden border-0 shadow-lg my-5" style="background: rgba(255, 255, 255, 0.15);
                 backdrop-filter: blur(15px);
                 -webkit-backdrop-filter: blur(15px);
                 border: 1px solid rgba(255, 255, 255, 0.2) !important;">
