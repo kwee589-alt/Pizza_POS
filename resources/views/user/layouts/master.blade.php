@@ -40,7 +40,7 @@
     <!-- 1. Navbar ကို Card ရဲ့ အပြင်မှာ ထားပြီး sticky-top ပေးလိုက်ပါ -->
     <div class="sticky-top w-100" style="z-index: 1050;">
         <div class="container py-3">
-            <nav class="navbar navbar-expand-xl navbar-dark rounded-pill px-4 py-2 shadow"
+            <nav class="navbar navbar-expand navbar-dark rounded-pill px-4 py-2 shadow"
                 style="background: rgba(0,0,0,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1);">
 
                 <a href="{{ route('userHome') }}" class="navbar-brand d-flex align-items-center">
@@ -212,6 +212,7 @@
     <script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('user/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 <script>
@@ -297,7 +298,25 @@
 </script>
 
 <script>
-    //  +- addcart
+    $(document).ready(function() {
+
+        $('.btn-plus').click(function() {
+            var $input = $(this).closest('.input-group').find('#quantity');
+            var val = parseInt($input.val());
+            if (!isNaN(val)) {
+                $input.val(val + 1);
+            }
+        });
+
+
+        $('.btn-minus').click(function() {
+            var $input = $(this).closest('.input-group').find('#quantity');
+            var val = parseInt($input.val());
+            if (!isNaN(val) && val > 1) {
+                $input.val(val - 1);
+            }
+        });
+    });
 </script>
 
 <script>
