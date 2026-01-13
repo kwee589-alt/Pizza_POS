@@ -212,7 +212,7 @@
     <script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('user/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 <script>
@@ -225,11 +225,12 @@
         }
         reader.readAsDataURL(event.target.files[0])
     }
+</script>
 
 
 
 
-
+<script>
     //owl carousel
 
     $(document).ready(function() {
@@ -241,6 +242,7 @@
         })
     })
 </script>
+
 
 <script>
     // + -
@@ -297,27 +299,11 @@
     })
 </script>
 
-{{-- <script>
-    $(document).ready(function() {
-
-        $('.btn-plus').click(function() {
-            var $input = $(this).closest('.input-group').find('#quantity');
-            var val = parseInt($input.val());
-            if (!isNaN(val)) {
-                $input.val(val + 1);
-            }
-        });
 
 
-        $('.btn-minus').click(function() {
-            var $input = $(this).closest('.input-group').find('#quantity');
-            var val = parseInt($input.val());
-            if (!isNaN(val) && val > 1) {
-                $input.val(val - 1);
-            }
-        });
-    });
-</script> --}}
+
+
+
 
 <script>
     $(document).ready(function() {
@@ -426,4 +412,5 @@
     })
 </script>
 
-</html>
+
+< /html>
