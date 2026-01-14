@@ -10,7 +10,7 @@
                     <a href="{{ route('userHome') }}"> Home </a> <i class=" mx-1 mb-4 fa-solid fa-greater-than"></i> Details
                     <div class="row g-4">
                         <div class="col-lg-6">
-                            <div class="border rounded">
+                            <div class="border rounded overflow-hidden ">
                                 <a href="#">
                                     <img src="{{ $product->image }}" style="height: 300px; object-fit:cover;"
                                         class="img-fluid w-100 rounded" alt="Image">
@@ -179,7 +179,7 @@
 
                                     @foreach ($comment as $item)
                                         <div class="d-flex mb-2">
-                                            <img src="{{ asset($item->user_profile != null ? $item->user_profile : 'admin/img/undraw_profile.svg') }}"
+                                            <img src="{{ Auth::user()->profile && str_contains(Auth::user()->profile, 'http') ? Auth::user()->profile : asset('profile/' . Auth::user()->profile) }}"
                                                 class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;">
                                             <div class="">
                                                 <p class="" style="font-size: 14px;">
@@ -263,8 +263,8 @@
                 @foreach ($productList as $item)
                     @if ($product->id != $item->id)
                         <div class="border border-primary rounded  d-flex flex-column position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="{{ $item->image }}" style="height: 250px"
+                            <div class="vesitable-img overflow-hidden ">
+                                <img src="{{ $item->image }}" style="height: 200px; object-fit: cover;"
                                     class="  @if (count($productList) >= 3) img-fluid w-100 @endif rounded-top"
                                     alt="">
                             </div>
@@ -302,4 +302,31 @@
     </div>
 
     <!-- Single Product End -->
+@endsection
+
+@section('content')
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            // + ခလုတ်အတွက်
+            $('.btn-plus').click(function() {
+                var input = $('#quantity');
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal)) {
+                    input.val(currentVal + 1);
+                }
+            });
+
+            // - ခလုတ်အတွက်
+            $('.btn-minus').click(function() {
+                var input = $('#quantity');
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal) && currentVal > 1) {
+                    input.val(currentVal - 1);
+                }
+            });
+        });
+    </script>
 @endsection

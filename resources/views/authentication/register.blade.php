@@ -15,7 +15,7 @@
 
 
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-12 col-md-10 col-lg-7 mx-auto">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
