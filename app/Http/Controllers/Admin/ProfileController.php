@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class ProfileController extends Controller
 {
     //  direct chage password page
@@ -97,32 +98,23 @@ class ProfileController extends Controller
 
     $data =  $this->requestProfileData($request);
 
-    if($request->hasFile('image')) {
-
-
-
-        //delete old image
-
-        if(Auth::user()->profile != null ){
-            if(file_exists(public_path('profile/' . Auth::user()->profile))){
-                unlink(public_path('profile/' . Auth::user()->profile)) ;
-            }
+   if ($request->hasFile('image')) {
+    // ၁။ အရင်ရှိပြီးသား ပုံအဟောင်းကို Public Folder ထဲက ဖျက်တဲ့အပိုင်း (ဒါက အရင်အတိုင်း ထားလို့ရပါတယ်)
+    if (Auth::user()->profile != null) {
+        if (file_exists(public_path('profile/' . Auth::user()->profile))) {
+            unlink(public_path('profile/' . Auth::user()->profile));
         }
+    }
 
-       $file = $request->file('image');
+    // ၂။ Cloudinary ပေါ်သို့ ပုံအသစ်တင်ခြင်း
+    $file = $request->file('image');
+    $cloudinaryUpload = Cloudinary::upload($file->getRealPath(), [
+        'folder' => 'profile_pictures' // Cloudinary ထဲမှာ folder အမည်နဲ့ သိမ်းချင်ရင်
+    ]);
 
-$response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
-    'key'   => '6293ca7d07fc20a4a80ecbeb83abee40',
-    'image' => base64_encode(file_get_contents($file->getRealPath())),
-]);
-$resData = $response->json();
-if ($response->successful() && isset($resData['data']['url'])) {
-    return $response->json();
-    $data['profile'] = $response->json()['data']['url']; // Cloud ကပေးတဲ့ link ကို ယူလိုက်ပြီ
+    // ၃။ ရလာတဲ့ URL ကို $data ထဲသို့ ထည့်ခြင်း
+    $data['profile'] = $cloudinaryUpload->getSecurePath();
 }else{
-    dd($resData);
-}
-    }else{
            $data['profile'] =  Auth::user()->profile ;
        }
 

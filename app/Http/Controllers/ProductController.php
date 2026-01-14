@@ -102,31 +102,20 @@ class ProductController extends Controller
     //update product
 
     public function update(Request $request){
-        $this->checkProductValidation($request,"update");
-      $product =  $this->getProductData($request);
+         $this->checkProductValidation($request);
+    $product = $this->getProductData($request);
 
-        if($request->hasFile('image')){
-              $image = $request->file('image');
-
-    $response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
-        'key' => '6293ca7d07fc20a4a80ecbeb83abee40',
-        'image' => base64_encode(file_get_contents($image->getRealPath())),
-    ]);
-
-    if ($response->successful()) {
-        $product['image'] = $response->json()['data']['url']; // Local နာမည်အစား URL link ကို ထည့်လိုက်ပါ
+    if ($request->hasFile('image')) {
+        // Cloudinary ပေါ်တင်ပြီး URL ယူခြင်း
+        $image = $request->file('image');
+        $product['image'] = Cloudinary::upload($image->getRealPath())->getSecurePath();
+    } else {
+        $product['image'] = $request->oldPhoto;
     }
-} else {
-    $product['image'] = $request->oldPhoto;
 
-            Product::where('id',$request->productId)->update($product);
-            Alert::success('Product Update', 'Product Updated Successfully...');
-
-
-                 return to_route('List#productsList');
-
-        }
-
+    Product::where('id', $request->productId)->update($product);
+    Alert::success('Product Update', 'Product Updated Successfully...');
+    return to_route('List#productsList');
 
 
 
