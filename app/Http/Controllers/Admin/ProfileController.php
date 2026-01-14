@@ -109,14 +109,12 @@ class ProfileController extends Controller
             }
         }
 
-        //storage new image
+       $file = $request->file('image');
 
-       // Storage new image (နဂို code အဟောင်းနေရာမှာ ဒါလေး အစားထိုးပါ)
 $response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
-    'key' => 'e0c4ef80331647eb7f9dc77e87d16b31',
-    'image' => base64_encode(file_get_contents($request->file('image')->getRealPath())),
+    'key'   => '6293ca7d07fc20a4a80ecbeb83abee40',
+    'image' => base64_encode(file_get_contents($file->getRealPath())),
 ]);
-
 if ($response->successful()) {
     return response->json();
     $data['profile'] = $response->json()['data']['url']; // Cloud ကပေးတဲ့ link ကို ယူလိုက်ပြီ

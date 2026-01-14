@@ -109,7 +109,7 @@ class ProductController extends Controller
               $image = $request->file('image');
 
     $response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
-        'key' => 'e0c4ef80331647eb7f9dc77e87d16b31',
+        'key' => '6293ca7d07fc20a4a80ecbeb83abee40',
         'image' => base64_encode(file_get_contents($image->getRealPath())),
     ]);
 
