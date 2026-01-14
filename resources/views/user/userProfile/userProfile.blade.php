@@ -13,7 +13,7 @@
                     <div class="row align-items-center">
 
                         <div class="col-md-5 text-center mb-4 mb-md-0">
-                            <img src="{{ asset(Auth::user()->profile != null ? 'profile/' . Auth::user()->profile : 'admin/img/undraw_profile.svg') }}"
+                            <img src="{{ Auth::user()->profile && str_contains(Auth::user()->profile, 'http') ? Auth::user()->profile : asset('profile/' . Auth::user()->profile) }}"
                                 class="img-fluid rounded-circle img-thumbnail shadow-sm"
                                 style="width: 250px; height: 250px; object-fit: cover;" id="output">
 

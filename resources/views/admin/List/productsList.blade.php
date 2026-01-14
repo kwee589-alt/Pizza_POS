@@ -44,8 +44,8 @@
                             @foreach ($products as $item)
                                 <tr>
                                     <td>{{ $item['id'] }}</td>
-                                    <td> <img src="{{ asset('product/' . $item->image) }}"
-                                            class=" img-thumbnail rounded shadow-sm" style="width:100px" alt="">
+                                    <td> <img src="{{ $item->image }}" class=" img-thumbnail rounded shadow-sm"
+                                            style="width:100px" alt="">
                                     </td>
                                     <td>{{ $item['name'] }}</td>
                                     <td> {{ $item['price'] }} mmk</td>

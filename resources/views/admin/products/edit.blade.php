@@ -20,8 +20,7 @@
                             <input type="hidden" name="productId" value="{{ $product->id }}">
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <img class="img-profile w-50  " id="output"
-                                        src="{{ asset('product/' . $product->image) }}">
+                                    <img class="img-profile w-50  " id="output" src="{{ $product->image }}">
 
 
                                     <input type="file" name="image" id=""
