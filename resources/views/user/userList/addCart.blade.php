@@ -25,8 +25,9 @@
                             <tr>
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ $item->image }}" class="img-fluid me-5 rounded-circle"
-                                            style="width: 80px; height: 80px;" alt="">
+                                        <img src="{{ str_contains($item->image, 'http') ? $item->image : asset('product/' . $item->image) }}"
+                                            class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;"
+                                            alt="">
                                     </div>
                                 </th>
                                 <td>
