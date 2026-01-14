@@ -72,7 +72,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle p-0 d-flex align-items-center text-white"
                                 data-bs-toggle="dropdown">
-                                <img src="{{ Auth::user()->profile ? 'profile/' . Auth::user()->profile : 'admin/img/undraw_profile.svg' }}"
+                                <img src="{{ Auth::user()->profile ? Auth::user()->profile : 'admin/img/undraw_profile.svg' }}"
                                     style="width: 35px; height: 35px; object-fit: cover;" class="rounded-circle me-2"
                                     alt="User">
                                 <span class="small">{{ Auth::user()->name ?? Auth::user()->nickname }}</span>
