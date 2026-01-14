@@ -12,7 +12,7 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="{{ asset('product/' . $product->image) }}"
+                                    <img src="{{ asset('storage/product/' . $product->image) }}"
                                         style="height: 300px; object-fit:cover;" class="img-fluid w-100 rounded"
                                         alt="Image">
                                 </a>
