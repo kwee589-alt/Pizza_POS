@@ -271,7 +271,8 @@
                             <div class="vesitable-img overflow-hidden rounded-top ">
 
                                 <img src="{{ str_contains($item->image, 'http') ? $item->image : asset('product/' . $item->image) }}"
-                                    style="height: 320px; object-fit: cover;" class=" @if (count($productList) >= 3) img-fluid w-100" alt="Grapes">
+                                    style="height: 320px; object-fit: cover;"
+                                    class=" @if (count($productList) >= 3) img-fluid w-100 @endif" alt="Grapes">
                             </div>
                             <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
                                 style="top: 10px; right: 10px;">{{ $item->category_name }}</div>
@@ -293,44 +294,45 @@
 
 
                             </div>
-                        </div> @endif
-     @endforeach
-
-                            </div>
-
-
-
                         </div>
-
+                    @endif
+                @endforeach
 
             </div>
 
-            <!-- Single Product End -->
-        @endsection
 
-        @section('content')
-        @endsection
 
-        @section('script')
-            <script>
-                $(document).ready(function() {
-                    // + ခလုတ်အတွက်
-                    $('.btn-plus').click(function() {
-                        var input = $('#quantity');
-                        var currentVal = parseInt(input.val());
-                        if (!isNaN(currentVal)) {
-                            input.val(currentVal + 1);
-                        }
-                    });
+        </div>
 
-                    // - ခလုတ်အတွက်
-                    $('.btn-minus').click(function() {
-                        var input = $('#quantity');
-                        var currentVal = parseInt(input.val());
-                        if (!isNaN(currentVal) && currentVal > 1) {
-                            input.val(currentVal - 1);
-                        }
-                    });
-                });
-            </script>
-        @endsection
+
+    </div>
+
+    <!-- Single Product End -->
+@endsection
+
+@section('content')
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            // + ခလုတ်အတွက်
+            $('.btn-plus').click(function() {
+                var input = $('#quantity');
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal)) {
+                    input.val(currentVal + 1);
+                }
+            });
+
+            // - ခလုတ်အတွက်
+            $('.btn-minus').click(function() {
+                var input = $('#quantity');
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal) && currentVal > 1) {
+                    input.val(currentVal - 1);
+                }
+            });
+        });
+    </script>
+@endsection
