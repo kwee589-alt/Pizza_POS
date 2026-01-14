@@ -179,12 +179,13 @@
 
                                     @foreach ($comment as $item)
                                         <div class="d-flex mb-2">
-                                            <img src="{{ Auth::check() && Auth::user()->profile != null
+                                            <img src="{{ Auth::check() && Auth::user()->profile
                                                 ? (str_contains(Auth::user()->profile, 'http')
                                                     ? Auth::user()->profile
                                                     : asset('profile/' . Auth::user()->profile))
                                                 : asset('admin/img/undraw_profile.svg') }}"
-                                                class="..." alt="Profile">
+                                                style="width: 35px; height: 35px; object-fit: cover;"
+                                                class="rounded-circle me-2" alt="User">
                                             <div class="">
                                                 <p class="" style="font-size: 14px;">
                                                     {{ $item->created_at->format('j-F-Y / h:i A') }}
@@ -267,10 +268,10 @@
                 @foreach ($productList as $item)
                     @if ($product->id != $item->id)
                         <div class="border border-primary rounded  d-flex flex-column position-relative vesitable-item">
-                            <div class="vesitable-img overflow-hidden ">
-                                <img src="{{ $item->image }}" style="height: 200px; object-fit: cover;"
-                                    class="  @if (count($productList) >= 3) img-fluid w-100 @endif rounded-top"
-                                    alt="">
+                            <div class="vesitable-img overflow-hidden rounded-top ">
+
+                                <img src="{{ str_contains($item->image, 'http') ? $item->image : asset('product/' . $item->image) }}"
+                                    style="height: 320px; object-fit: cover;" class=" @if (count($productList) >= 3) img-fluid w-100" alt="Grapes">
                             </div>
                             <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
                                 style="top: 10px; right: 10px;">{{ $item->category_name }}</div>
@@ -292,45 +293,44 @@
 
 
                             </div>
+                        </div> @endif
+     @endforeach
+
+                            </div>
+
+
+
                         </div>
-                    @endif
-                @endforeach
+
 
             </div>
 
+            <!-- Single Product End -->
+        @endsection
 
+        @section('content')
+        @endsection
 
-        </div>
+        @section('script')
+            <script>
+                $(document).ready(function() {
+                    // + ခလုတ်အတွက်
+                    $('.btn-plus').click(function() {
+                        var input = $('#quantity');
+                        var currentVal = parseInt(input.val());
+                        if (!isNaN(currentVal)) {
+                            input.val(currentVal + 1);
+                        }
+                    });
 
-
-    </div>
-
-    <!-- Single Product End -->
-@endsection
-
-@section('content')
-@endsection
-
-@section('script')
-    <script>
-        $(document).ready(function() {
-            // + ခလုတ်အတွက်
-            $('.btn-plus').click(function() {
-                var input = $('#quantity');
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal)) {
-                    input.val(currentVal + 1);
-                }
-            });
-
-            // - ခလုတ်အတွက်
-            $('.btn-minus').click(function() {
-                var input = $('#quantity');
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal) && currentVal > 1) {
-                    input.val(currentVal - 1);
-                }
-            });
-        });
-    </script>
-@endsection
+                    // - ခလုတ်အတွက်
+                    $('.btn-minus').click(function() {
+                        var input = $('#quantity');
+                        var currentVal = parseInt(input.val());
+                        if (!isNaN(currentVal) && currentVal > 1) {
+                            input.val(currentVal - 1);
+                        }
+                    });
+                });
+            </script>
+        @endsection
