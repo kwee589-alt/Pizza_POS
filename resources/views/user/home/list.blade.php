@@ -75,12 +75,8 @@
                                                     <h4 class="text-start text-warning">{{ $item->name }}</h4>
                                                     <p class="text-start small mb-3">{{ $item->description }}</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap mt-auto">
-                                                        <p class="text-white  fs-5 fw-bold mb-0">{{ $item->price }}</p>
-                                                        <a href="#"
-                                                            class="btn border border-secondary rounded-pill px-3 text-primary btn-sm">
-                                                            <i class="fa fa-shopping-bag me-1 text-primary"></i>
-                                                            Add
-                                                        </a>
+                                                        <p class="text-white  fs-5 fw-bold mb-0">{{ $item->price }} mmk</p>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,13 +208,8 @@
                                                                 <div
                                                                     class="d-flex justify-content-between flex-lg-wrap mt-auto">
                                                                     <p class="text-white  fs-5 fw-bold mb-0">
-                                                                        {{ $item->price }}</p>
-                                                                    <a href="#"
-                                                                        class="btn border border-secondary rounded-pill px-3 text-primary btn-sm">
-                                                                        <i
-                                                                            class="fa fa-shopping-bag me-1 text-primary"></i>
-                                                                        Add
-                                                                    </a>
+                                                                        {{ $item->price }} mmk</p>
+
                                                                 </div>
                                                             </div>
                                                         </div>
