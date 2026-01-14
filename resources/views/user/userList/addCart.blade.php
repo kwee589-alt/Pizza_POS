@@ -25,7 +25,7 @@
                             <tr>
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset('storage/product/' . $item->image) }}"
+                                        <img src="{{ asset('product/' . $item->image) }}"
                                             class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;"
                                             alt="">
                                     </div>
