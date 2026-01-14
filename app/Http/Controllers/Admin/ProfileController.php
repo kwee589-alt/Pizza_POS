@@ -118,6 +118,8 @@ $response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
 if ($response->successful()) {
     return response->json();
     $data['profile'] = $response->json()['data']['url']; // Cloud ကပေးတဲ့ link ကို ယူလိုက်ပြီ
+}else{
+    return $response->json();
 }
     }else{
            $data['profile'] =  Auth::user()->profile ;
