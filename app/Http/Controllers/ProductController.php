@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductController extends Controller
 {
@@ -25,9 +26,9 @@ class ProductController extends Controller
        $product = $this->getProductData($request);
 
        if($request->hasFile('image')){
-         $fileName = uniqid() . $request->file('image')->getClientOriginalName();
-         $request->file('image')->move(public_path() . '/product/',$fileName);
-         $product['image'] = $fileName;
+         // Cloudinary ပေါ်တင်ပြီး URL ယူခြင်း
+        $image = $request->file('image');
+        $product['image'] = Cloudinary::upload($image->getRealPath())->getSecurePath();
        }
        Product::create($product);
         Alert::success('Product Create', 'Product Created Successfully...');
@@ -102,7 +103,7 @@ class ProductController extends Controller
     //update product
 
     public function update(Request $request){
-         $this->checkProductValidation($request);
+         $this->checkProductValidation($request,'update');
     $product = $this->getProductData($request);
 
     if ($request->hasFile('image')) {
