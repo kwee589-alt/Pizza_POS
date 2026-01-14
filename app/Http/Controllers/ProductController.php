@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
@@ -105,14 +106,18 @@ class ProductController extends Controller
       $product =  $this->getProductData($request);
 
         if($request->hasFile('image')){
-            if(file_exists(public_path('product/'.$request->oldPhoto))){
-               $fileName = uniqid() . $request->file('image')->getClientOriginalName();
-               $request->file('image')->move(public_path() . '/product/',$fileName);
-               $product['image'] = $fileName;
+              $image = $request->file('image');
 
-            }else{
-                $product['image'] = $request->oldPhoto;
-            }
+    $response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
+        'key' => 'e0c4ef80331647eb7f9dc77e87d16b31',
+        'image' => base64_encode(file_get_contents($image->getRealPath())),
+    ]);
+
+    if ($response->successful()) {
+        $product['image'] = $response->json()['data']['url']; // Local နာမည်အစား URL link ကို ထည့်လိုက်ပါ
+    }
+} else {
+    $product['image'] = $request->oldPhoto;
 
             Product::where('id',$request->productId)->update($product);
             Alert::success('Product Update', 'Product Updated Successfully...');

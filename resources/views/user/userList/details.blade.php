@@ -12,9 +12,8 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="{{ asset('product/' . $product->image) }}"
-                                        style="height: 300px; object-fit:cover;" class="img-fluid w-100 rounded"
-                                        alt="Image">
+                                    <img src="{{ $product->image }}" style="height: 300px; object-fit:cover;"
+                                        class="img-fluid w-100 rounded" alt="Image">
                                 </a>
                             </div>
                         </div>
@@ -180,7 +179,7 @@
 
                                     @foreach ($comment as $item)
                                         <div class="d-flex mb-2">
-                                            <img src="{{ asset($item->user_profile != null ? 'profile/' . $item->user_profile : 'admin/img/undraw_profile.svg') }}"
+                                            <img src="{{ asset($item->user_profile != null ? $item->user_profile : 'admin/img/undraw_profile.svg') }}"
                                                 class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;">
                                             <div class="">
                                                 <p class="" style="font-size: 14px;">
@@ -265,7 +264,7 @@
                     @if ($product->id != $item->id)
                         <div class="border border-primary rounded  d-flex flex-column position-relative vesitable-item">
                             <div class="vesitable-img">
-                                <img src="{{ asset('product/' . $item->image) }}" style="height: 250px"
+                                <img src="{{ $item->image }}" style="height: 250px"
                                     class="  @if (count($productList) >= 3) img-fluid w-100 @endif rounded-top"
                                     alt="">
                             </div>

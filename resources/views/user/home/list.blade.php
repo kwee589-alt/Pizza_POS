@@ -62,7 +62,7 @@
                                             <div class="rounded position-relative fruite-item  h-100">
                                                 <div class="fruite-img overflow-hidden rounded-top">
                                                     <a href="{{ route('userList#details', $item->id) }}">
-                                                        <img src="{{ asset('product/' . $item->image) }}"
+                                                        <img src="{{ $item->image }}"
                                                             style="height: 200px; object-fit: cover;"
                                                             class="img-fluid w-100" alt="Grapes">
                                                     </a>
@@ -195,7 +195,7 @@
                                                         <div class="rounded position-relative fruite-item  h-100">
                                                             <div class="fruite-img overflow-hidden rounded-top">
                                                                 <a href="{{ route('userList#details', $item->id) }}">
-                                                                    <img src="{{ asset('product/' . $item->image) }}"
+                                                                    <img src="{{ $item->image }}"
                                                                         style="height: 200px; object-fit: cover;"
                                                                         class="img-fluid w-100" alt="Grapes">
                                                                 </a>

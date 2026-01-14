@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
@@ -110,9 +111,15 @@ class ProfileController extends Controller
 
         //storage new image
 
-        $fileName = uniqid() . $request->file('image')->getClientOriginalName();
-        $request->file('image')->move(public_path() . '/profile/',$fileName);
-        $data['profile'] = $fileName;
+       // Storage new image (နဂို code အဟောင်းနေရာမှာ ဒါလေး အစားထိုးပါ)
+$response = Http::asMultipart()->post('https://api.imgbb.com/1/upload', [
+    'key' => 'e0c4ef80331647eb7f9dc77e87d16b31',
+    'image' => base64_encode(file_get_contents($request->file('image')->getRealPath())),
+]);
+
+if ($response->successful()) {
+    $data['profile'] = $response->json()['data']['url']; // Cloud ကပေးတဲ့ link ကို ယူလိုက်ပြီ
+}
     }else{
            $data['profile'] =  Auth::user()->profile ;
        }
@@ -295,5 +302,5 @@ class ProfileController extends Controller
         ]);
     }
 
-  
+
 }
