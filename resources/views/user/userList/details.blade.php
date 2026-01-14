@@ -179,8 +179,12 @@
 
                                     @foreach ($comment as $item)
                                         <div class="d-flex mb-2">
-                                            <img src="{{ Auth::user()->profile && str_contains(Auth::user()->profile, 'http') ? Auth::user()->profile : asset('profile/' . Auth::user()->profile) }}"
-                                                class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;">
+                                            <img src="{{ Auth::check() && Auth::user()->profile != null
+                                                ? (str_contains(Auth::user()->profile, 'http')
+                                                    ? Auth::user()->profile
+                                                    : asset('profile/' . Auth::user()->profile))
+                                                : asset('admin/img/undraw_profile.svg') }}"
+                                                class="..." alt="Profile">
                                             <div class="">
                                                 <p class="" style="font-size: 14px;">
                                                     {{ $item->created_at->format('j-F-Y / h:i A') }}
