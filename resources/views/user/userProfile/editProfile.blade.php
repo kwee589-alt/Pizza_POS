@@ -24,7 +24,7 @@
                         <div class="col-3 py-5 px-5">
 
                             <img class="img-profile img-thumbnail  " id="output"
-                                src="{{ asset(Auth::user()->profile != null ? 'profile/' . Auth::user()->profile : 'admin/img/undraw_profile.svg') }}">
+                                src="{{ Auth::user()->profile && str_contains(Auth::user()->profile, 'http') ? Auth::user()->profile : asset('admin/img/undraw_profile.svg') }}">
 
 
                             <input type="file" name="image" id=""
