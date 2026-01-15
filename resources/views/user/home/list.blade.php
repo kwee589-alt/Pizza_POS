@@ -73,7 +73,11 @@
                                                 <div class="p-4 border d-flex flex-column flex-grow-1 h-50 border-secondary border-top-0 rounded-bottom"
                                                     style="background: rgba(0,0,0,0.6); backdrop-filter: blur(20px); height:300px; border: 1px solid rgba(255,255,255,0.1);">
                                                     <h4 class="text-start text-warning">{{ $item->name }}</h4>
-                                                    <p class="text-start small mb-3">{{ $item->description }}</p>
+                                                    <p class="text-start text-gray-300 small mb-3">{{ $item->description }}
+                                                    </p>
+                                                    <p class="text-muted small text-center text-white"><i
+                                                            class="fas fa-clock"></i>{{ $item->created_at->diffForHumans() }}
+                                                    </p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap mt-auto">
                                                         <p class="text-white  fs-5 fw-bold mb-0">{{ $item->price }} mmk</p>
 
@@ -203,7 +207,11 @@
                                                                 style="background: rgba(0,0,0,0.6); backdrop-filter: blur(20px); height:300px; border: 1px solid rgba(255,255,255,0.1);">
                                                                 <h4 class="text-start text-warning">{{ $item->name }}
                                                                 </h4>
-                                                                <p class="text-start small mb-3">{{ $item->description }}
+                                                                <p class="text-start text-gray-300 small mb-3">
+                                                                    {{ $item->description }}
+                                                                </p>
+                                                                <p class="text-muted small text-center text-white"><i
+                                                                        class="fas fa-clock"></i>{{ $item->created_at->diffForHumans() }}
                                                                 </p>
                                                                 <div
                                                                     class="d-flex justify-content-between flex-lg-wrap mt-auto">
