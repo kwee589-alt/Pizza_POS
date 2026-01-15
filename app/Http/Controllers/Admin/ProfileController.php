@@ -107,9 +107,9 @@ class ProfileController extends Controller
     }
 
     // ၂။ Cloudinary ပေါ်သို့ ပုံအသစ်တင်ခြင်း
-    $file = $request->file('image');
+    $file = $request->filprofile_picturese('image');
     $cloudinaryUpload = Cloudinary::upload($file->getRealPath(), [
-        'folder' => 'profile_pictures' // Cloudinary ထဲမှာ folder အမည်နဲ့ သိမ်းချင်ရင်
+        'folder' => '' // Cloudinary ထဲမှာ folder အမည်နဲ့ သိမ်းချင်ရင်
     ]);
 
     // ၃။ ရလာတဲ့ URL ကို $data ထဲသို့ ထည့်ခြင်း

@@ -50,9 +50,8 @@ class ProfileController extends Controller
 
         //storage new image
 
-        $fileName = uniqid() . $request->file('image')->getClientOriginalName();
-        $request->file('image')->move(public_path() . '/profile/',$fileName);
-        $data['profile'] = $fileName;
+       $uploadResult =$request->file('image')->storeOnCloudinary();
+        $data['profile'] = $uploadResult->getSecurePath();
     }else{
            $data['profile'] =  Auth::user()->profile ;
        }
