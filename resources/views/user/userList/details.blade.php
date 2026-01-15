@@ -45,7 +45,7 @@
                                 <i class="fas fa-eye"></i> <span class="fw-bold"> {{ $view_count }}</span>
                             </div>
 
-                            <p class="mb-3">Category: {{ $product->description }}</p>
+                            <p class="mb-3">Description: {{ $product->description }}</p>
                             <p class="mb-4"></p>
                             <form action="{{ route('userList#addToCart') }}" method="post">
                                 @csrf
@@ -274,7 +274,7 @@
                                     style="height: 320px; object-fit: cover;"
                                     class=" @if (count($productList) >= 3) img-fluid w-100 @endif" alt="Grapes">
                             </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
+                            <div class="text-white  px-3 py-1 rounded position-absolute"
                                 style="top: 10px; left: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);  border: 1px solid rgba(255,255,255,0.1);">
                                 {{ $item->category_name }}</div>
                             <div class="p-4 border d-flex flex-column flex-grow-1 h-50  border-secondary border-top-0 rounded-bottom"
