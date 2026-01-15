@@ -284,9 +284,7 @@
                                 <p class="text-center">
                                     {{ Str::words($item['description'], 10, '...') }}
                                 </p>
-                                <p class="text-muted small text-center text-white"><i
-                                        class="fas fa-clock"></i>{{ $item->created_at->diffForHumans() }}
-                                </p>
+
                                 <div class="d-flex justify-content-between  flex-lg-wrap mt-auto">
                                     <p class="text-white fs-5 fw-bold mb-0">{{ $item->price }} mmk
                                     </p>

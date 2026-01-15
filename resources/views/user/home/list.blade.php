@@ -75,9 +75,7 @@
                                                     <h4 class="text-start text-warning">{{ $item->name }}</h4>
                                                     <p class="text-start text-gray-300 small mb-3">{{ $item->description }}
                                                     </p>
-                                                    <p class="text-muted small text-center text-white"><i
-                                                            class="fas fa-clock"></i>{{ $item->created_at->diffForHumans() }}
-                                                    </p>
+
                                                     <div class="d-flex justify-content-between flex-lg-wrap mt-auto">
                                                         <p class="text-white  fs-5 fw-bold mb-0">{{ $item->price }} mmk</p>
 
@@ -210,9 +208,7 @@
                                                                 <p class="text-start text-gray-300 small mb-3">
                                                                     {{ $item->description }}
                                                                 </p>
-                                                                <p class="text-muted small text-center text-white"><i
-                                                                        class="fas fa-clock"></i>{{ $item->created_at->diffForHumans() }}
-                                                                </p>
+
                                                                 <div
                                                                     class="d-flex justify-content-between flex-lg-wrap mt-auto">
                                                                     <p class="text-white  fs-5 fw-bold mb-0">
